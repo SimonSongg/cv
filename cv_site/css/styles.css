@@ -9,10 +9,15 @@ hr {background-color: #FFF5EB;
 }
 .section {
   text-decoration: underline;
+  color: black;
 }
 
 .years{
   text-align: right;
 }
 h1 {color: #66BFBF;}
-h3 {color: #66BFBF;}
+h2 {color: #66BFBF;}
+
+.school{
+  font-size: 1em;
+}

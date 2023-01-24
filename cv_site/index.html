@@ -5,9 +5,43 @@
   <meta charset="utf-8">
   <title>Tianchen's website</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Resume</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Projects
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <table>
     <tr>
       <td>
@@ -18,20 +52,23 @@
         <p>
           A student from 🇨🇳 studying in 🇺🇸
         </p>
+        <p>An enthusiast of Robotics and AI 🤖</p>
 
       </td>
     </tr>
   </table>
 
 
-  <h3><a href="contact.html">My Contact</a></h3>
-  <h4 class='section'>EDUCATIONAL BACKGROUND</h4>
-  <p><strong>University of Nottingham, Ningbo, China &ensp;&ensp;&ensp;&ensp;09.2018-07.2022</strong><br />Bachelor of Engineering in Electrical and Electronic Engineering |
-    Overall GPA: 3.89/4.0 | Dean’s scholarship (2021.12)</p>
+  <h2><a href="contact.html">My Contact</a></h2>
+  <h3 class='section'>EDUCATIONAL BACKGROUND</h3>
+  <p ><strong>University of Nottingham, Ningbo, China &ensp;&ensp;&ensp;&ensp;09.2018-07.2022</strong>
+  <br />Bachelor of Engineering in Electrical and Electronic Engineering |
+    Overall GPA: 3.89/4.0 | Dean's scholarship (2021.12)</p>
   <p><strong>Johns Hopkins University &ensp;&ensp;&ensp;&ensp;&ensp;
       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
       &ensp;&ensp;&ensp;&ensp;09.2022-06.2024</strong>
-    <br />Master of Science in Engineering in Robotics
+    <br />Master of Science in Engineering in Robotics | GPA: 3.80/4.0
+    <br />Courses: Machine Learning | Algorithms for Sensor-based Robotics | Augmented Reality | Robot Motion Planning | Learning-based Control for Robotics | Robot System Programming
   </p>
 
   <!-- Here I used <em> tag instead of <i> tag,
@@ -49,19 +86,24 @@
   </p>
   -->
   <hr>
-  <h4 class="section"><strong>ONGOING COURSES</strong></h4>
+  <h4 class="section"><strong>ONGOING ONLINE COURSES</strong></h4>
   <ul>
     <li>
-      <strong>Udemy:</strong> The Complete 2022 Web Development Bootcamp
+      <strong>Acwing:</strong> Fundamentals of Algorithms
     </li>
     <li>
-      <strong>Acwing:</strong> Fundamentals of Algorithms
+      <strong>DR_CAN:</strong> Modern Control Theory
     </li>
   </ul>
   <hr>
   <h4 class="section"><strong>PAST PROJECTS</strong></h4>
   <ul>
     <!-- Unordered list -->
+    <li><strong>Augment reality application development</strong></li><br />
+      <ul>
+        <li>Developed a zombie-chase-player AR game from scratch using Unity 3D and Vuforia and deployed it on an iPhone</li>
+        <li>Developing an AR application to map human anatomy onto the person in image in real time for anatomy education</li>
+      </ul>
     <li><strong>Autonomous Delivery Vehicle</strong><br />
       <ul>
         <li>
