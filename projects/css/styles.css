@@ -7,7 +7,7 @@
 
 .projectcontent {
   /* display: inline-block; */
-  width: 85%;
+  width: 90%;
   line-height: 1.5;
   margin: auto;
 }
@@ -31,3 +31,8 @@ figure {
 h1{
   margin-left: 10px;
 }
+
+table,table tr th, table tr td {
+ border:1px solid #ccc;
+ margin: auto;
+ }

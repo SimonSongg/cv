@@ -104,172 +104,193 @@
   <hr />
   <h4 class="section"><strong>PAST PROJECTS</strong></h4>
   <ul>
+    <li>
+      <h4>Computer Vision & Machine Learning</h4>
+      <!-- project1 -->
+      <ul>
+        <li>
+          <strong>Alzheimer's disease diagnosis based on MRI scans and clinical
+            data</strong><br />
+          <ul>
+            <li>Pre-processed the MRI scan data to fit the network input</li>
+            <li>
+              Designed networks based on ResNet-18 by adding attention block and
+              clinical data input
+            </li>
+            <li>
+              Trained, tested and compared the model performance between different
+              architectures and hyperparameters and reached 83.8% accuracy and
+              97.7% recall on test set.
+            </li>
+          </ul>
+        </li>
+        <!-- project1 ends and project2 starts-->
+        <li>
+          <strong>Augment reality application development</strong><br />
+          <ul>
+            <li>
+              Developed a zombie-chase-player AR game from scratch using Unity 3D
+              and Vuforia and deployed it on an iPhone
+            </li>
+            <li>
+              Developing an AR application to map human anatomy onto the person in
+              image in real time for anatomy education
+            </li>
+          </ul>
+        </li>
+        <!-- project 2- 3 -->
+        <li>
+          <strong>Deep Learning for Medical Image Segmentation</strong><br />
+          <ul>
+            <li>Redesigned the U-Net to output desired image size.</li>
+            <li>
+              Tested the impact of padding and dropout in convolutional layers on
+              prediction accuracy.
+            </li>
+            <li>
+              Experimented with the elastic deformation method for data
+              augmentation, the overlap-tile strategy for seamless segmentation,
+              and the Adam optimizer for improved convergence rate.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+
+    </li>
+    <li>
+      <h4>Robotics</h4>
+      <ul>
+        <li>
+          <strong>Implementation of extended Kalman filter and particle filter for
+            mobile robot pose estimation</strong><br />
+          <ul>
+            <li>
+              Implemented extended Kalman filter in C++ to estimate the location
+              of a mobile robot based on GPS and IMU on a simulated rugged terrain
+              to obtain location errors smaller than 0.5m
+            </li>
+            <li>
+              Implemented particle filter in C++ to estimate the position and
+              orientation of a mobile robot in a given map based on Lidar
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Motion Planning for a 6-joint serial link manipulator (UR5)</strong><br />
+          <ul>
+            <li>
+              Implemented hand-eye calibration algorithm in MATLAB for
+              manipulator-camera systems
+            </li>
+            <li>
+              Implemented Probability RoadMap Planning in C++ to enable the
+              collision free operation of the manipulator
+            </li>
+          </ul>
+        </li>
+
+
+
+
+
+        <li>
+          <a href="../projects/adv.html"><strong>Autonomous Delivery Vehicle</strong></a>
+          <br />
+          <ul>
+            <li>
+              Designed the mechanical structures for package storage and sensors
+              integration.
+            </li>
+            <li>
+              Implemented a deep learning model in PyTorch to drive real-time
+              RGB-D camera frame segmentation to detect the collision-free space
+              for obstacle avoidance purpose on NVIDIA Jetson; further enhance
+              system robustness by integrating radar and ultrasonic sensor data.
+            </li>
+            <li>
+              Developed a signal conditioning system on ROS to extract, process,
+              and fuse raw data from an array of sensors, including GPS module,
+              radars, IMU, wheel encoders, RGB-D cameras, and ultrasonic sensors.
+            </li>
+            <li>
+              Fused the GPS and IMU data using Kalman filter to obtain a
+              continuous position estimation.
+            </li>
+            <li>
+              Developed a local path planning algorithm for obstacle avoidance,
+              with a focus on multi-sensor data fusion and utilize A* algorithm
+              for global path finding.
+            </li>
+            <li>
+              Developing the delivery service functionality and human-robot
+              interaction for delivery service using.
+            </li>
+          </ul>
+        </li>
+        <!-- List item -->
+        <li>
+          <strong>Line following robotic vehicle</strong><br />
+          <ul>
+            <li>
+              Designed the PCB of H-Bridge motor control circuit in KiCad to
+              integrate an array of electronic components, including MOSFET
+              driver, MOSFETs among other peripheral equipment, followed by
+              soldering, wire connection, and hardware test.
+            </li>
+            <li>
+              Enabled recognition of traffic light and road signs based on an
+              array of classical computer vision algorithms implemented in C++
+              using Raspberry Pi and OpenCV API, with a focus on navigating
+              through a preset route while performing various dynamics maneuvers
+              following model road signs.
+            </li>
+            <li>
+              Enabled remote monitoring and control of the robotic vehicle via an
+              Arduino-based controller using a pair of wireless modules nrf24l04.
+            </li>
+            <li>
+              Built and parametrically optimized a PID controller to improve the
+              line-tracking performance.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=eYJ18sTPcjE&t=6s">
+            <strong>Indoor autonomous vehicle</strong></a><br />
+          <ul>
+            <li>
+              Utilized DWM1000 UWB compliant wireless transceiver module to enable
+              indoor localization with a precision of 10 cm, range of 100m, and
+              data transmission rate of 6.8 Mb/s and utilize A* algorithm for
+              global path planning.
+            </li>
+            <li>
+              Converted the PyTorch model for collision-free space segmentation to
+              TensorRT inference engine to get about 3 times faster real-time
+              performance on Jetson board.
+            </li>
+            <li>
+              Developed a suite of control algorithms in Python to enable
+              real-time steering, speed control and path-finding based on sensor
+              data; perform microcontroller unit programming in C; develop the
+              system based on ROS mainly in Python.
+            </li>
+            <li>
+              uild a GUI in Swift general-purpose programming language for
+              monitoring and controlling the robot through Bluetooth on an iOS
+              device.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <!-- <li><h4>Electical Engineering</h4></li> -->
+
     <!-- Unordered list -->
-    <li>
-      <strong>Implementation of extended Kalman filter and particle filter for
-        mobile robot pose estimation</strong><br />
-      <ul>
-        <li>
-          Implemented extended Kalman filter in C++ to estimate the location
-          of a mobile robot based on GPS and IMU on a simulated rugged terrain
-          to obtain location errors smaller than 0.5m
-        </li>
-        <li>
-          Implemented particle filter in C++ to estimate the position and
-          orientation of a mobile robot in a given map based on Lidar
-        </li>
-      </ul>
-    </li>
 
-    <li>
-      <strong>Motion Planning for a 6-joint serial link manipulator (UR5)</strong><br />
-      <ul>
-        <li>
-          Implemented hand-eye calibration algorithm in MATLAB for
-          manipulator-camera systems
-        </li>
-        <li>
-          Implemented Probability RoadMap Planning in C++ to enable the
-          collision free operation of the manipulator
-        </li>
-      </ul>
-    </li>
 
-    <li>
-      <strong>Alzheimer's disease diagnosis based on MRI scans and clinical
-        data</strong><br />
-      <ul>
-        <li>Pre-processed the MRI scan data to fit the network input</li>
-        <li>
-          Designed networks based on ResNet-18 by adding attention block and
-          clinical data input
-        </li>
-        <li>
-          Trained, tested and compared the model performance between different
-          architectures and hyperparameters and reached 83.8% accuracy and
-          97.7% recall on test set.
-        </li>
-      </ul>
-    </li>
-
-    <li>
-      <strong>Augment reality application development</strong><br />
-      <ul>
-        <li>
-          Developed a zombie-chase-player AR game from scratch using Unity 3D
-          and Vuforia and deployed it on an iPhone
-        </li>
-        <li>
-          Developing an AR application to map human anatomy onto the person in
-          image in real time for anatomy education
-        </li>
-      </ul>
-    </li>
-
-    <li>
-      <a href="../projects/adv.html"><strong>Autonomous Delivery Vehicle</strong></a>
-      <br />
-      <ul>
-        <li>
-          Designed the mechanical structures for package storage and sensors
-          integration.
-        </li>
-        <li>
-          Implemented a deep learning model in PyTorch to drive real-time
-          RGB-D camera frame segmentation to detect the collision-free space
-          for obstacle avoidance purpose on NVIDIA Jetson; further enhance
-          system robustness by integrating radar and ultrasonic sensor data.
-        </li>
-        <li>
-          Developed a signal conditioning system on ROS to extract, process,
-          and fuse raw data from an array of sensors, including GPS module,
-          radars, IMU, wheel encoders, RGB-D cameras, and ultrasonic sensors.
-        </li>
-        <li>
-          Fused the GPS and IMU data using Kalman filter to obtain a
-          continuous position estimation.
-        </li>
-        <li>
-          Developed a local path planning algorithm for obstacle avoidance,
-          with a focus on multi-sensor data fusion and utilize A* algorithm
-          for global path finding.
-        </li>
-        <li>
-          Developing the delivery service functionality and human-robot
-          interaction for delivery service using.
-        </li>
-      </ul>
-    </li>
-    <!-- List item -->
-    <li>
-      <strong>Line following robotic vehicle</strong><br />
-      <ul>
-        <li>
-          Designed the PCB of H-Bridge motor control circuit in KiCad to
-          integrate an array of electronic components, including MOSFET
-          driver, MOSFETs among other peripheral equipment, followed by
-          soldering, wire connection, and hardware test.
-        </li>
-        <li>
-          Enabled recognition of traffic light and road signs based on an
-          array of classical computer vision algorithms implemented in C++
-          using Raspberry Pi and OpenCV API, with a focus on navigating
-          through a preset route while performing various dynamics maneuvers
-          following model road signs.
-        </li>
-        <li>
-          Enabled remote monitoring and control of the robotic vehicle via an
-          Arduino-based controller using a pair of wireless modules nrf24l04.
-        </li>
-        <li>
-          Built and parametrically optimized a PID controller to improve the
-          line-tracking performance.
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=eYJ18sTPcjE&t=6s">
-        <strong>Indoor autonomous vehicle</strong></a><br />
-      <ul>
-        <li>
-          Utilized DWM1000 UWB compliant wireless transceiver module to enable
-          indoor localization with a precision of 10 cm, range of 100m, and
-          data transmission rate of 6.8 Mb/s and utilize A* algorithm for
-          global path planning.
-        </li>
-        <li>
-          Converted the PyTorch model for collision-free space segmentation to
-          TensorRT inference engine to get about 3 times faster real-time
-          performance on Jetson board.
-        </li>
-        <li>
-          Developed a suite of control algorithms in Python to enable
-          real-time steering, speed control and path-finding based on sensor
-          data; perform microcontroller unit programming in C; develop the
-          system based on ROS mainly in Python.
-        </li>
-        <li>
-          uild a GUI in Swift general-purpose programming language for
-          monitoring and controlling the robot through Bluetooth on an iOS
-          device.
-        </li>
-      </ul>
-    </li>
-    <li>
-      <strong>Deep Learning for Medical Image Segmentation</strong><br />
-      <ul>
-        <li>Redesigned the U-Net to output desired image size.</li>
-        <li>
-          Tested the impact of padding and dropout in convolutional layers on
-          prediction accuracy.
-        </li>
-        <li>
-          Experimented with the elastic deformation method for data
-          augmentation, the overlap-tile strategy for seamless segmentation,
-          and the Adam optimizer for improved convergence rate.
-        </li>
-      </ul>
-    </li>
   </ul>
   <hr />
   <h4 class="section">PROGRAMMING LANGUAGES</h4>

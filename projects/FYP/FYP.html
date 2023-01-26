@@ -58,9 +58,37 @@
     </div>
   </nav>
   <h1>Indoor Cruising Robot</h1>
-  <img src="WechatIMG303.jpeg" alt="" height="300" class="introimg" />
+  <img src="fyp1.png" alt="" height="400" class="introimg" /><br><br>
+  <img src="youtube.png" alt="" height="50" class="introimg" />
+  <a href="https://www.youtube.com/watch?v=eYJ18sTPcjE&t=6s">
+    <strong>Milestone recording</strong></a><br />
   <hr>
-  Still completing this page......
+
+  <div class="projectcontent">
+    <p>Inherited from the Autonomous Delivery Vehicle project, I used three UWB anchors and one UWB tag to achieve indoor localization.
+      Meanwhile, thanks to TensorRT, I accelerated the inference speed of the collision space segmentation model used in the previous project to 3x.
+      Moreover, I built an app using swift to enable the remote control between an iPhone and the vehicle through Bluetooth.</p>
+
+  </div>
+
+  <figure>
+    <img src="fyp2.png" alt="" height="300" />
+    <figcaption>Segmentation networks</figcaption>
+  </figure>
+
+  <div class="projectcontent">
+    <p>Segmentation Network Structure (R. Fan, H. Wang, P. Cai, and M. Liu, ‘SNE-RoadSeg: Incorporating Surface Normal Information into Semantic Segmentation for Accurate Freespace Detection’, p. 17.) </p>
+    The dataset included 1061 outdoor samples and 512 indoor samples. The dataset was splited into training/validation/test set in the ratio of 6:2:2.
+
+  </div>
+
+  <figure>
+    <img src="fyp3.png" alt="" height="50" />
+    <img src="fyp4.png" alt="" height="50" />
+    <img src="fyp5.png" alt="" height="50" />
+    <img src="fyp6.png" alt="" height="50" />
+    <figcaption>Segmentation results</figcaption>
+  </figure>
   <!-- <div class="formula">
         <label>暴雨强度公式：</label>`i=A/(t+b)^n`<br>
         <label>峰前降雨强度公式：</label>`i(t_b)=A[(1-n)*t/r+b]/[(t_b/r)+b]^(n+1)`<br>
@@ -68,7 +96,46 @@
         <label>备注：</label>`A=[A_1(1+ClgP)]/167`<br>
         <label for="">勾股定理：</label> `a^2+b^2=c^2`
     </div> -->
-  <p>$$\underline E = mc^2$$</p>
+  <div class="projectcontent">
+    The performance comparison with TensorRT acceleration
+  </div>
+
+  <table border="2">
+    <tr>
+      <td></td>
+      <td>Original</td>
+      <td>FP32</td>
+      <td>FP16</td>
+      <td>INT8</td>
+      <td>Acceleration</td>
+    </tr>
+    <tr>
+      <td>18-layers ResNet</td>
+      <td>2.11</td>
+      <td>2.54</td>
+      <td>5.21</td>
+      <td>6.70</td>
+      <td>120.38%/246.92%/317.54%</td>
+    </tr>
+    <tr>
+      <td>34-layers ResNet</td>
+      <td>1.71</td>
+      <td>2.12</td>
+      <td>4.85</td>
+      <td>6.34</td>
+      <td>123.98%/283.63%/370.76%</td>
+    </tr>
+    <tr>
+      <td>Frame rate loss</td>
+      <td>18.96%</td>
+      <td>16.54%</td>
+      <td>6.91%</td>
+      <td>5.37%</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <!-- <p>$$\underline E = mc^2$$</p> -->
 
 </body>
 
