@@ -36,3 +36,10 @@ table,table tr th, table tr td {
  border:1px solid #ccc;
  margin: auto;
  }
+
+video {
+  /* text-align: center; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

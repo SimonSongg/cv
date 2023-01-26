@@ -78,6 +78,7 @@
 
   <div class="projectcontent">
     <p>Segmentation Network Structure (R. Fan, H. Wang, P. Cai, and M. Liu, ‘SNE-RoadSeg: Incorporating Surface Normal Information into Semantic Segmentation for Accurate Freespace Detection’, p. 17.) </p>
+    It took both RGB image and depth map for collision-free space prediction.
     The dataset included 1061 outdoor samples and 512 indoor samples. The dataset was splited into training/validation/test set in the ratio of 6:2:2.
 
   </div>
@@ -97,7 +98,9 @@
         <label for="">勾股定理：</label> `a^2+b^2=c^2`
     </div> -->
   <div class="projectcontent">
-    The performance comparison with TensorRT acceleration
+    The PyTorch model was converted to ONNX then to TensorRT inference engine.
+    Several inference precision was tested.
+    The performance comparison with TensorRT acceleration:
   </div>
 
   <table border="2">

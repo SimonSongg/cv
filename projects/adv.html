@@ -77,7 +77,8 @@
     </p>
     <p>
       Globally, the vehicle was localized by <strong>RTK-GPS</strong> which provided <strong>10 cm</strong>
-      accuracy, and guided in the pre-built waypoint map. <strong>A* algorithm</strong> will provide a shortest path
+      accuracy, and guided in the pre-built waypoint map. A ROS package for localization was used, which toke wheel odometry, IMU and GPS and used
+      extended kalman filter to produce an optimal estimation of the position of the robot. <strong>A* algorithm</strong> will provide a shortest path
       from the closest waypoint to the given destination.
     </p>
   </div>
@@ -101,6 +102,11 @@
     side with more collision-free space.<br>
     Radar acted as a back-up for the visual system. If objects in short distance were detected, the vehicle will perform
     emergency stop.
+
+  </div>
+
+  <div class="projectcontent">
+    A touch screen was mounted on the top of the vehicle for user-robot interaction.
 
   </div>
 
