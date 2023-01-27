@@ -60,9 +60,33 @@
 
   <h1>Hand-eye calibration and path planning for UR5 manipulator</h1>
   <img src="ur5.jpeg" alt="" height="300" class="introimg" />
+  <br>
   <hr>
 
-  <video width=64% height=36% controls>
+  <div class="projectcontent">
+    The aim of this project was to let the UR5 manipulator pick the cube with a visual tag and drop it in a box also with a visual tag.<br><br>
+    The project had three main components.
+    <ol>
+      <li>Hand-eye calibration</li>
+      <li>Forward & Inverse Kinematics</li>
+      <li>Path Planning</li>
+    </ol>
+
+    What we did? How?
+    <ol>
+      <li>Collected about 10 data pairs of the transformation <strong>from robot base to the gripper (hand)</strong> and <strong>from the camera to the tag</strong>.</li>
+      <li>Calculated the transformation from gripper to the camera.</li>
+      <li>Registered the cube and the box.</li>
+      <li>Calculated the inverse kinematics with the end effector (the gripper) at the position of cube.</li>
+      <li>Used Probability RoadMap Planning to generate a collision-free path from the current configuration to the one got from the last step.</li>
+      <li>Moved the UR5 to pick the cube and plan the path to the box.</li>
+      <li>Moved the UR5 to the box and release the cube.</li>
+    </ol>
+
+  </div>
+
+
+  <video width=64%  controls>
     <source src="asbr.mp4" type="video/mp4">
     <source src="asbr.ogg" type="video/ogg">
     <source src="asbr.webm" type="video/webm">
@@ -70,6 +94,26 @@
       <embed src="asbr.swf" width="320" height="240">
     </object>
   </video>
+  <!-- <nav>
+    <ul>
+      <li class="logo"><img src="https://i.imgur.com/E26Pj54.png"></li>
+      <li><a href="#"><i class="fa fa-home"></i>&nbsp; Home</a></li>
+      <li><a href="#"><i class="fa fa-book"></i>&nbsp; Book</a></li>
+      <li><a href="#"><i class="fa fa-users"></i>&nbsp; Users</a></li>
+      <li><a href="#"><i class="fa fa-picture-o"></i>&nbsp; Pictures</a></li>
+      <li><a href="#"><i class="fa fa-phone"></i>&nbsp; Contact</a></li>
+    </ul>
+  </nav> -->
+
+  <!-- <div class="wrapper">
+    <div class="section">
+      <div class="box-area">
+        <h2>Home</h2>
+      </div>
+
+    </div>
+  </div> -->
+
 </body>
 
 </html>
