@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>UR5 Project</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [['$', '$'], ["\\(", "\\)"]], //行内公式选择符
+                    displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+                    skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+                },
+            });
+        </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../../-68320c78eded82aa.jpg" alt="icon" height="50" width="50" />
+                Tianchen's site
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cv_site/index.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="../adv.html">Autonomous Delivery Vehicle</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../FYP/FYP.html">Indoor cruising robot</a></li>
+                            <li>
+                                <a class="dropdown-item" href="../asbr/asbr.html">Hand-eye calibration</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../3Drender/3Drender.html">3D rendering by Pygame</a>
+                            </li>
+                            <a class="dropdown-item" href="#">Stereo Matching</a>
+                    </li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../blogs/blogs_main.html">Blogs</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Stereo Matching</h1>
+    <img src="sgm.png" alt="" height="300" class="introimg" />
+    <hr>
+    <div>
+        <h2>
+            Objectives &amp; Main Features
+        </h2>
+        <p>
+            The objectives of the project were to explore the performance
+            difference of various stereo matching methods including Sum of Absolute
+            Differences, Sum of Squared Differences, Normalized Cross Correlation
+            and Semi-global matching (SGM), as well as the choosing of parameters
+            such as kernel size. Intel Realsense D455 RGB-D camera was used to
+            collect the stereo image pairs. The Intel Realsense RGB-D camera could
+            emit infrared ray to assist the depth estimation by adding extra
+            features to some surface without feature such as white walls.
+            Therefore, whether the infrared ray could help generate better depth
+            map will be tested and discussed.
+        </p>
+        <h2>
+            Steps &amp; Implementation
+        </h2>
+        <p>
+            In general, the matching procedure could be executed as shown in the
+            flowchart in Figure 2. The idea was to find the same point in the real
+            world in both left and right image. Usually, as shown in Figure 1, a
+            kernel (a square area) was firstly chosen in one image, for example,
+            the left image. Then, starting from the same position as the kernel in
+            the left image, a horizontally sliding kernel was created in the right
+            image and the cost between the kernel in the left image and the sliding
+            kernel in the right image was calculated. The cost function could be
+            modified. The kernel position with the least cost in the sliding range,
+            which could also be modified, in the right image was considered as a
+            match to the left kernel. The pixel distance between the position of
+            the left kernel and the one in the right image was the disparity. As
+            the closer the object is, the larger the disparity is. The sliding
+            range decided the closest distance that the depth map could be
+            generated.
+        </p>
+        <figure>
+            <img src="stereo1.png" alt="" height="300" />
+            <figcaption>Matching</figcaption>
+        </figure>
+        <figure>
+            <img src="flowchart.svg" alt="" />
+            <figcaption>Flowchart</figcaption>
+        </figure>
+
+
+        <p>
+            Three different cost functions, which were SAD, SSD and NCC, were
+            implemented and the performance for each cost function will be
+            discussed in the next section.
+        </p>
+
+        <p>
+            <strong>Sum of Absolute Differences (SAD)</strong>
+        </p>
+        $$\sum_{\left(i,j\right)\in W}\left|I_1\left(i,j\right)-I_2\left(x+i,y+j\right)\right|$$
+
+        <p>
+            <strong>Sum of Squared Differences (SSD)</strong>
+        </p>
+        $$\sum_{\left(i,j\right)\in W}\left(I_1\left(i,j\right)-I_2\left(x+i,y+j\right)\right)^2$$
+
+        <p>
+            <strong>Normalized Cross Correlation (NCC)</strong>
+        </p>
+        $$\frac{\sum_{\left(i,j\right)\in W}{I_1\left(i,j\right)\bullet
+        I_2\left(x+i,y+j\right)}}{\sqrt[2]{\sum_{\left(i,j\right)\in
+        W}{{I^2}_1\left(i,j\right)}\bullet\sum_{\left(i,j\right)\in W}{{I^2}_2\left(x+i,y+j\right)}}}$$
+        <h4>
+            Semi-global Matching (SGM) - Census Transform &amp; Hamming distance
+        </h4>
+        <p>
+            The previous methods used the sum of the cost for each pixel in the
+            kernel between the left and right image to find the best match. In
+            another words, the sum of the pixel value difference was used as the
+            feature that the matching process referred to.
+        </p>
+        <p>
+            For the scene with little illumination change and with relatively high
+            number of features, SAD, SSD and NCC may find pretty good matches.
+            However, if the illumination condition was different in two images, the
+            matching will be greatly influenced because the mean pixel value will
+            be different even if for the same part of the image.
+        </p>
+        <p>
+            Census transform used the pixel difference between the certain pixel
+            with the adjacent pixels as the feature for matching. Therefore, it
+            could be considered the pattern of changing for each pixel was used. As
+            shown in Figure 3, the census transform was to compare the value of the
+            center pixel and the pixels around it. If the adjacent pixel was
+            larger, encode ‘1’ while the center pixel was larger, encode ‘0’. Then,
+            the binary code series of the kernel in left and right images did ‘XOR’
+            operation, the output was called Hamming distance, which could be
+            considered as cost. The best match should have the smallest Hamming
+            distance.
+        </p>
+        <figure>
+            <img src="stereo2.jpg" alt="">
+            <figcaption>Hamming Cost</figcaption>
+        </figure>
+        <h3>
+            Results
+        </h3>
+        <p>
+            Three aforementioned cost functions were tested with different size of
+            kernels. Moreover, as Intel Realsense RGB-D camera, which could
+            actively emit infrared ray with a fixed pattern to assist on-chip
+            stereo matching on the camera, was used to collect stereo images, the
+            stereo matching performance with or without the assistance of infrared
+            ray was tested and compared as well. The collected images were
+            self-rectified before output from the camera. Therefore, the images
+            were used directly for stereo matching. The resolutions of the images
+            for matching were 848*480. Figure 4 and Figure 5 were the image
+            captured without infrared ray while Figure 6 and Figure 7 were the
+            image captured with infrared ray on. The largest disparity was set to
+            100 for completed depth calculation.
+        </p>
+        <p>
+            <strong>Without Infrared Laser:</strong>
+        </p>
+        <figure>
+            <img src="stereoL.png" alt="" height="300" />
+            <figcaption>Left image without laser</figcaption>
+          </figure>
+          <figure>
+            <img src="stereoR.png" alt="" height="300" />
+            <figcaption>Right image without laser</figcaption>
+          </figure>
+        <br clear="all" />
+    </div>
+    <br clear="all" />
+    <div>
+        <table border="1" cellspacing="0" cellpadding="0" align="center" width="657">
+            <tbody>
+                <tr>
+                    <td width="22" valign="top">
+                    </td>
+                    <td width="223" valign="top">
+                        <p align="center">
+                            SAD
+                        </p>
+                    </td>
+                    <td width="208" valign="top">
+                        <p align="center">
+                            SSD
+                        </p>
+                    </td>
+                    <td width="204" valign="top">
+                        <p align="center">
+                            NCC
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            3
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        <figure>
+                            <img src="img/sad/SAD3.jpg" alt=""  />
+                            
+                          </figure>
+                          
+                    </td>
+                    <td  valign="top">
+                        <figure>
+                            <img src="img/ssd/ssd3.jpg" alt=""  />
+                            
+                          </figure>
+                    </td>
+                    <td  valign="top">
+                        <figure>
+                            <img src="img/ncc/ncc3.jpg" alt=""  />
+                            
+                          </figure>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            7
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad7.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd7.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc7.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            11
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                        <img src="img/sad/sad11.jpg" alt=""  />
+                        
+                      
+                      
+                </td>
+                <td  valign="top">
+                    
+                        <img src="img/ssd/ssd11.jpg" alt=""  />
+                        
+                      
+                </td>
+                <td  valign="top">
+                    
+                        <img src="img/ncc/ncc11.jpg" alt=""  />
+                        
+                      
+                </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            15
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad15.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd15.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc15.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            19
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad19.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd19.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc19.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            23
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad23.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd23.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc23.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            27
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad27.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd27.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc27.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="22" valign="top">
+                        <p align="center">
+                            31
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/sad/sad31.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ssd/ssd31.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="img/ncc/ncc31.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br clear="all" />
+    <div>
+        <p>
+            <strong>With Infrared Laser:</strong>
+        </p>
+        <figure>
+            <img src="stereoLL.jpg" alt="" height="300" />
+            <figcaption>Left image with laser</figcaption>
+          </figure>
+          <figure>
+            <img src="stereoLR.jpg" alt="" height="300" />
+            <figcaption>Right image with laser</figcaption>
+          </figure>
+        <br clear="all" />
+    </div>
+    <br clear="all" />
+    <div>
+        <table border="1" cellspacing="0" cellpadding="0" align="center" width="652">
+            <tbody>
+                <tr>
+                    <td width="28" valign="top">
+                    </td>
+                    <td width="209" valign="top">
+                        <p align="center">
+                            SAD
+                        </p>
+                    </td>
+                    <td width="207" valign="top">
+                        <p align="center">
+                            SSD
+                        </p>
+                    </td>
+                    <td width="207" valign="top">
+                        <p align="center">
+                            NCC
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            3
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad3.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd3.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc3.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            7
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad7.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd7.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc7.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            11
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad11.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd11.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc11.jpg" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            15
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad15.jpg" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd15.jpg" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc15.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            19
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad19.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd19.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc19.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            23
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad23.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd23.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc23.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            27
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad27.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd27.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc27.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td width="28" valign="top">
+                        <p align="center">
+                            31
+                        </p>
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/sad/sad31.png" alt=""  />
+                            
+                          
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ssd/ssd31.png" alt=""  />
+                            
+                          
+                    </td>
+                    <td  valign="top">
+                        
+                            <img src="imgLaser/ncc/ncc31.png" alt=""  />
+                            
+                          
+                    </td>
+                </tr>
+            </tbody>
+    </div>
+    <br clear="all" />
+    <p>
+        As the figures in Table 1 and 2 shown, for both laser-assisted and normal
+        images, the depth map generated by kernels with smaller sizes were noisier
+        and with a greater number of pixels that failed to be matched. However, it
+        could be observed that although the depth maps generated with large kernels
+        were smoother, they lost some of the details of the objects in the image
+        such as the sharpness of their shapes. The reason for this phenomenon might
+        be that small kernels will have large changes in values when sliding,
+        therefore, it was relatively easy to match to a random area that was
+        similar to the correct target. On the contrary, large kernels were
+        relatively consistent in values, so that large kernels may not reflect
+        small details but will be more likely to be smooth. Among three different
+        cost functions, it was apparent that the normalized cross correlation (NCC)
+        gave matching results with less noise and more valid matching pixels than
+        the other two methods did. By using NCC, the improvement was mainly in the
+        area that was with little strong features. In the images generated by the
+        non-laser image pairs, the depth maps generated by NCC cost function were
+        more obviously better than the other two cost functions.
+    </p>
+    <p>
+        Compared the results obtained by the images with infrared lasers with the
+        ones without the assistance of the infrared lasers, it was obvious that the
+        laser-assisted results were much more detailed, for example, sharp edges on
+        objects, and with less failed pixels especially in the area that was lack
+        of features. In the three tested methods, only NCC could give reasonable
+        matching results without the assistance of infrared ray.
+    </p>
+    <p align="center">
+        Table 3. The duration for calculating the matching (unit: seconds)
+    </p>
+    <table border="1" cellspacing="0" cellpadding="0" width="562">
+        <tbody>
+            <tr>
+                <td width="43" valign="top">
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        3
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        7
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        11
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        15
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        19
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        23
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        27
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        31
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="43" valign="top">
+                    <p align="center">
+                        SAD
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        101.576
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        101.225
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        101.731
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        103.691
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        104.877
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        107.071
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        110.637
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        112.446
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="43" valign="top">
+                    <p align="center">
+                        SSD
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        138.111
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        141.071
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        144.934
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        151.417
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        160.569
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        167.141
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        189.495
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        205.365
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="43" valign="top">
+                    <p align="center">
+                        NCC
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        255.229
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        273.032
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        259.001
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        271.406
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        278.993
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        299.047
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        324.951
+                    </p>
+                </td>
+                <td width="65" valign="top">
+                    <p align="center">
+                        336.753
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        As for the time cost to calculate the matching, SAD cost function took the
+        shortest time to calculate the matching and NCC was the most time-consuming
+        one. Moreover, the larger the kernel was, the slower the calculation was.
+        This trend was applied to all three methods because larger kernels simply
+        led to more computation for each round of cost calculation.
+    </p>
+    <p>
+        These three methods all cost more than one minute to generate only one
+        depth map, which was too slow for some application like robotic vision that
+        needed very high real-time performance. One possible solution was to used
+        FPGA to calculate the depth because the calculation in stereo matching can
+        be executed in parallel. It was speculated that Intel Realsnese RGB-D
+        camera used FPGA inside the camera to do the stereo matching.
+    </p>
+    <!-- <p>
+        For Semi-global Matching, I still cannot fully understand the process of
+        cost aggregation, which could give a smoother and more precise depth
+        estimation. Therefore, I only coded the calculation of census
+        transformation and Hamming distance by myself, and I will use an
+        open-sourced code to generate the final result for comparison.
+    </p> -->
+    <figure>
+        <img src="cencus.png" alt="" height="300" />
+        <figcaption>Cencus Transform Result</figcaption>
+    </figure>
+    <figure>
+        <img src="hammingcost.png" alt="" height="300" />
+        <figcaption>Hamming Cost</figcaption>
+    </figure>
+    <figure>
+        <img src="result.png" alt="" height="300" />
+        <figcaption>SGM Result</figcaption>
+    </figure>
+    <p>
+        It could be observed that the depth was changing smoothly on surfaces and
+        was sharp on the edges. The scene was naturally presented, and objects
+        could be clearly recognized in the depth map.
+    </p>
+    <br clear="all" />
+    <p>
+        <strong>Conclusion</strong>
+    </p>
+    <p>
+        In conclusion, the window-based stereo matching performance with three
+        different cost functions, which were SAD, SSD and NCC, was discussed. It
+        was found that NCC had the best matching performance while it took the
+        longest time to compute. Moreover, the projection of infrared ray was
+        proved to be effective to generate depth maps with higher quality because
+        it could add extra features to the field of view so that the matching
+        algorithms could find the correct match with less effort, especially for
+        the area with little strong features. Additionally, the matching algorithm
+        needed to be implemented on specially designed FPGA for real-time
+        operation.
+    </p>
+
+</body>
+
+</html>

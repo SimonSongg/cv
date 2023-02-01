@@ -1,161 +1,243 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Indoor cruising robot</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Indoor cruising robot</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script
+      type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
 
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/styles.css" />
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../../-68320c78eded82aa.jpg" alt="icon" height="50" width="50" />
-        Tianchen's site
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../cv_site/index.html">Resume</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Projects
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li>
-                <a class="dropdown-item" href="../adv.html">Autonomous Delivery Vehicle</a>
-              </li>
-              <li><a class="dropdown-item" href="#">Indoor cruising robot</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Hand-eye calibration</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="../3Drender/3Drender.html">3D rendering by Pygame</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../blogs/blogs_main.html">Blogs</a>
-          </li>
-        </ul>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../../-68320c78eded82aa.jpg"
+            alt="icon"
+            height="50"
+            width="50"
+          />
+          Tianchen's site
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../../index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../cv_site/index.html">Resume</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Projects
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="../adv.html"
+                    >Autonomous Delivery Vehicle</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Indoor cruising robot</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Hand-eye calibration</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../3Drender/3Drender.html"
+                    >3D rendering by Pygame</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../stereo-matching/stereo.html"
+                    >Stereo Matching</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../blogs/blogs_main.html">Blogs</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <h1>Indoor Cruising Robot</h1>
+    <img src="fyp1.png" alt="" height="400" class="introimg" /><br /><br />
+    <img src="youtube.png" alt="" height="50" class="introimg" />
+    <a href="https://www.youtube.com/watch?v=eYJ18sTPcjE&t=6s">
+      <strong>Milestone recording</strong></a
+    ><br />
+    <hr />
+
+    <div class="projectcontent">
+      <p>
+        Inherited from the Autonomous Delivery Vehicle project, I used three UWB
+        anchors and one UWB tag to achieve indoor localization. Meanwhile,
+        thanks to TensorRT, I accelerated the inference speed of the collision
+        space segmentation model used in the previous project to 3x. Moreover, I
+        built an app using swift to enable the remote control between an iPhone
+        and the vehicle through Bluetooth.
+      </p>
     </div>
-  </nav>
-  <h1>Indoor Cruising Robot</h1>
-  <img src="fyp1.png" alt="" height="400" class="introimg" /><br><br>
-  <img src="youtube.png" alt="" height="50" class="introimg" />
-  <a href="https://www.youtube.com/watch?v=eYJ18sTPcjE&t=6s">
-    <strong>Milestone recording</strong></a><br />
-  <hr>
+    <div class="projectcontent">
+      <h3><strong>Hardware:</strong></h3>
+    </div>
+    <div
+      class="mxgraph"
+      style="
+        max-width: 100%;
+        border: 1px solid transparent;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      "
+      data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"Electron\" modified=\"2023-01-27T04:40:02.183Z\" agent=\"5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.6.2 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36\" etag=\"KGpnavhM4zDaOXjkjtDd\" version=\"20.6.2\" type=\"device\"&gt;&lt;diagram id=\"prtHgNgQTEPvFCAcTncT\" name=\"Page-1\"&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;"}'
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://viewer.diagrams.net/js/viewer-static.min.js"
+    ></script>
 
-  <div class="projectcontent">
-    <p>Inherited from the Autonomous Delivery Vehicle project, I used three UWB anchors and one UWB tag to achieve indoor localization.
-      Meanwhile, thanks to TensorRT, I accelerated the inference speed of the collision space segmentation model used in the previous project to 3x.
-      Moreover, I built an app using swift to enable the remote control between an iPhone and the vehicle through Bluetooth.</p>
+    <div class="projectcontent">
+      <h3><strong>Software:</strong></h3>
+    </div>
+    <div
+      class="mxgraph"
+      style="
+        max-width: 100%;
+        border: 1px solid transparent;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      "
+      data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"Electron\" modified=\"2023-01-27T05:11:23.337Z\" agent=\"5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.6.2 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36\" version=\"20.6.2\" etag=\"1Tou0_HotuiqAg_C_0Dv\" type=\"device\"&gt;&lt;diagram id=\"4XJeLjFDq2xIdPFuMVOz\" name=\"第 1 页\"&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;"}'
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://viewer.diagrams.net/js/viewer-static.min.js"
+    ></script>
+    <div class="projectcontent" style="text-align: center">
+      ROS nodes structures
+    </div>
+    <figure>
+      <img src="fyp2.png" alt="" height="300" />
+      <figcaption>Segmentation networks</figcaption>
+    </figure>
 
-  </div>
-  <div class="projectcontent">
-    <h3><strong>Hardware:</strong></h3>
-  </div>
-  <div class="mxgraph" style="max-width:100%;border:1px solid transparent;display: block;margin-left: auto;margin-right: auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;Electron\&quot; modified=\&quot;2023-01-27T04:40:02.183Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.6.2 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36\&quot; etag=\&quot;KGpnavhM4zDaOXjkjtDd\&quot; version=\&quot;20.6.2\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;prtHgNgQTEPvFCAcTncT\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-  <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+    <div class="projectcontent">
+      <p>
+        Segmentation Network Structure (R. Fan, H. Wang, P. Cai, and M. Liu,
+        ‘SNE-RoadSeg: Incorporating Surface Normal Information into Semantic
+        Segmentation for Accurate Freespace Detection’, p. 17.)
+      </p>
+      It took both RGB image and depth map as input, used ResNet as feature
+      extraction backbone to extract features at different scales and upsampled
+      to the original size.<br /><br />
+      The dataset included 1061 outdoor samples and 512 indoor samples. The
+      dataset was splited into training/validation/test set in the ratio of
+      6:2:2.
+    </div>
 
-  <div class="projectcontent">
-    <h3><strong>Software:</strong></h3>
-  </div>
-  <div class="mxgraph" style="max-width:100%;border:1px solid transparent;display: block;margin-left: auto;margin-right: auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;Electron\&quot; modified=\&quot;2023-01-27T05:11:23.337Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.6.2 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36\&quot; version=\&quot;20.6.2\&quot; etag=\&quot;1Tou0_HotuiqAg_C_0Dv\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;4XJeLjFDq2xIdPFuMVOz\&quot; name=\&quot;第 1 页\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-  <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-  <div class="projectcontent" style="text-align: center;">
-    ROS nodes structures
-  </div>
-  <figure>
-    <img src="fyp2.png" alt="" height="300" />
-    <figcaption>Segmentation networks</figcaption>
-  </figure>
-
-  <div class="projectcontent">
-    <p>Segmentation Network Structure (R. Fan, H. Wang, P. Cai, and M. Liu, ‘SNE-RoadSeg: Incorporating Surface Normal Information into Semantic Segmentation for Accurate Freespace Detection’, p. 17.) </p>
-    It took both RGB image and depth map as input, used ResNet as feature extraction backbone to extract features at different scales and upsampled to the original size.<br><br>
-    The dataset included 1061 outdoor samples and 512 indoor samples. The dataset was splited into training/validation/test set in the ratio of 6:2:2.
-
-  </div>
-
-  <figure>
-    <img src="fyp3.png" alt="" height="50" />
-    <img src="fyp4.png" alt="" height="50" />
-    <img src="fyp5.png" alt="" height="50" />
-    <img src="fyp6.png" alt="" height="50" />
-    <figcaption>Segmentation results</figcaption>
-  </figure>
-  <!-- <div class="formula">
+    <figure>
+      <img src="fyp3.png" alt="" height="50" />
+      <img src="fyp4.png" alt="" height="50" />
+      <img src="fyp5.png" alt="" height="50" />
+      <img src="fyp6.png" alt="" height="50" />
+      <figcaption>Segmentation results</figcaption>
+    </figure>
+    <!-- <div class="formula">
         <label>暴雨强度公式：</label>`i=A/(t+b)^n`<br>
         <label>峰前降雨强度公式：</label>`i(t_b)=A[(1-n)*t/r+b]/[(t_b/r)+b]^(n+1)`<br>
         <label>峰后降雨强度公式：</label>`i(t_a)=A[(1-n)*t_a/(1-r)+b]/[(t_a/(1-r))+b]^(n+1)`<br>
         <label>备注：</label>`A=[A_1(1+ClgP)]/167`<br>
         <label for="">勾股定理：</label> `a^2+b^2=c^2`
     </div> -->
-  <div class="projectcontent">
-    The PyTorch model was converted to ONNX then to TensorRT inference engine.
-    Several inference precision was tested.
-    The performance comparison with TensorRT acceleration:
-  </div>
+    <div class="projectcontent">
+      The PyTorch model was converted to ONNX then to TensorRT inference engine.
+      Several inference precision was tested. The performance comparison with
+      TensorRT acceleration:
+    </div>
 
-  <table border="2">
-    <tr>
-      <td></td>
-      <td>Original</td>
-      <td>FP32</td>
-      <td>FP16</td>
-      <td>INT8</td>
-      <td>Acceleration</td>
-    </tr>
-    <tr>
-      <td>18-layers ResNet</td>
-      <td>2.11</td>
-      <td>2.54</td>
-      <td>5.21</td>
-      <td>6.70</td>
-      <td>120.38%/246.92%/317.54%</td>
-    </tr>
-    <tr>
-      <td>34-layers ResNet</td>
-      <td>1.71</td>
-      <td>2.12</td>
-      <td>4.85</td>
-      <td>6.34</td>
-      <td>123.98%/283.63%/370.76%</td>
-    </tr>
-    <tr>
-      <td>Frame rate loss</td>
-      <td>18.96%</td>
-      <td>16.54%</td>
-      <td>6.91%</td>
-      <td>5.37%</td>
-      <td></td>
-    </tr>
-  </table>
+    <table border="2">
+      <tr>
+        <td></td>
+        <td>Original</td>
+        <td>FP32</td>
+        <td>FP16</td>
+        <td>INT8</td>
+        <td>Acceleration</td>
+      </tr>
+      <tr>
+        <td>18-layers ResNet</td>
+        <td>2.11</td>
+        <td>2.54</td>
+        <td>5.21</td>
+        <td>6.70</td>
+        <td>120.38%/246.92%/317.54%</td>
+      </tr>
+      <tr>
+        <td>34-layers ResNet</td>
+        <td>1.71</td>
+        <td>2.12</td>
+        <td>4.85</td>
+        <td>6.34</td>
+        <td>123.98%/283.63%/370.76%</td>
+      </tr>
+      <tr>
+        <td>Frame rate loss</td>
+        <td>18.96%</td>
+        <td>16.54%</td>
+        <td>6.91%</td>
+        <td>5.37%</td>
+        <td></td>
+      </tr>
+    </table>
 
-  <!-- <p>$$\underline E = mc^2$$</p> -->
-
-</body>
-
+    <!-- <p>$$\underline E = mc^2$$</p> -->
+  </body>
 </html>
