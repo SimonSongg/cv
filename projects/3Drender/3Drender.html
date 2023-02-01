@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3D Rendering</title>
+
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script> -->
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+ MathJax.Hub.Config({
+       tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]], //行内公式选择符
+            displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+            skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+      });
+</script>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../-68320c78eded82aa.jpg" alt="icon" height="50" width="50" />
+        Tianchen's site
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../cv_site/index.html">Resume</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Projects
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="../adv.html">Autonomous Delivery Vehicle</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Indoor cruising robot</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Hand-eye calibration</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">3D rendering by Pygame</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../blogs/blogs_main.html">Blogs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1>3D visualization of polyhedron by pygame</h1>
+  <img src="ur5.jpeg" alt="" height="300" class="introimg" />
+  <br>
+  <hr>
+
+  <div class="projectcontent">
+
+
+  </div>
+
+  <br>
+  <div class="projectcontent">
+    <h2><a name="_Toc120481403"></a>Introduction</h2>
+    The aim of this project: Given a set of 3D coordinates and edge relations, visualize the given polyhedron without any 3D library.<br><br>
+    <strong>Python</strong> was used as the programming language, and <strong>pygame</strong> was used to do content display.
+
+    <h2><a name="_Toc120481405"></a>Methods</h2>
+    <ul>
+      <li>STEP 1: Read in and parse the object file</li>
+    </ul>
+    <img src="3d1.png" alt="">
+    <p>The figure above shows an example of an object file. Two classes, <strong>vertex</strong> and <strong>surface</strong>, were defined in <strong>utils.py</strong> to store the information of vertices and surfaces provided.</p>
+    <p>&nbsp;</p>
+    <p>The <strong>vertex</strong> object contains the original coordinates of the vertex and the coordinates after each transformation. The <strong>getvector</strong> function could help calculate the vector pointing from another vertex to itself,
+      which is useful in the following steps.</p>
+    <p>The <strong>surface</strong> object is more straightforward, which contains three vertex objects.</p>
+    <p>Also, a<strong> readFile</strong> function was defined to parse the information in the object.txt file. <strong>readFile</strong> function will return an array of vertex objects and an array of surface objects.</p>
+    <ul>
+      <li>STEP 2: Interaction with mouse</li>
+    </ul>
+    <p>Mouse was used to interact with the object. The function <em>pygame.mouse.get_rel() </em>was used to get the relative mouse position compared to the last position sampled. This value determined the amount that the object will rotate. The
+      rotation about X axis was controlled by the vertical movement of mouse and vice versa.More specifically,</p>
+    <ul>
+      <li>STEP 3: Rotation calculation</li>
+    </ul>
+    <p>Rotation of points in 3D space could be expressed by the multiplication of rotation matrix. The rotation matrix for rotation about X, Y and Z axis are,</p>
+
+    $$ \mathbf{R}_x = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \cos (\mathrm{\theta_x}) & -\sin (\mathrm{\theta_x}) \\
+    0 & \sin (\mathrm{\theta_x}) & \cos (\mathrm{\theta_x})
+    \end{bmatrix}$$
+
+    $$ \mathbf{R}_y = \begin{bmatrix}
+    \cos (\mathrm{\theta_y}) & 0 & \sin(\mathrm{\theta_y}) \\
+    0 & 1 & 0 \\
+    -\sin(\mathrm{\theta_y}) & 0 & \cos(\mathrm{\theta_y})
+    \end{bmatrix}$$
+
+    $$ \mathbf{R}_z = \begin{bmatrix}
+    \cos (\mathrm{\theta_z}) & -\sin (\mathrm{\theta_z}) & 0 \\
+    \sin (\mathrm{\theta_z}) & \cos (\mathrm{\theta_z}) & 0 \\
+    0 & 0 & 1
+    \end{bmatrix} $$
+    <p>In this task, only rotation about X and Y axis are required.</p>
+    <ul>
+      <li>STEP 4: Rendering</li>
+    </ul>
+    <p>After the position of each point was calculated, the next step was to project the points on the canvas. As the observer was at infinity, the projection line could be considered in parallel. Therefore, the x and y coordinates could be directly
+      used. To make the object in the center of the canvas with appropriate size, the final 2D coordinates are calculated as follows,</p>
+    $$x_{2D}=x_{3D}\ast100+Width/2$$
+    $$y_{2D}=y_{3D}\ast100+Height/2$$
+    <p>&nbsp;</p>
+    <img src="3d2.png" alt="">
+    <p>After find the points on canvas, simply draw lines between vertices that defined in surface.</p>
+    <h2><a name="_Toc120481406"></a>Task 1 Results</h2>
+    <img src="3d3.png" alt="">
+    <p>The object could be successfully rendered as a frame. Mouse could be used to drag the object to rotate.</p>
+    <p><span style="font-weight: 400;">&nbsp;</span></p>
+    <h2><a name="_Toc120481407"></a>Task 2</h2>
+    <h2><a name="_Toc120481408"></a>Introduction</h2>
+    <p style="font-weight: 400;">In Task 2, rasterization process and depth buffer were implemented to finalize the rendering pipeline based on Task 1.</p>
+    <h2><a name="_Toc120481409"></a>Methods</h2>
+    <ul>
+      <li>STEP 5: Rasterization</li>
+    </ul>
+
+    <p style="font-weight: 400;">For each projected surface on canvas, traverse all pixels in the rectangular area bounded by the vertices and check whether each pixel is in the triangle. If yes, then this pixel needs to be rendered, and ignore it if
+      not in the triangle.</p>
+    <img src="3d4.png" alt="">
+
+    <p style="font-weight: 400;">To check whether a pixel <strong>P</strong> is in the triangle, we can check if vector BP and BC are on the same side of vector BA and do the same check for all three vertices as shown below. If one pixel passed all
+      three safety check, then it is in the surface!</p>
+    <img src="3d5.jpg" alt="" height="200px">
+    <p style="font-weight: 400;">&nbsp;&nbsp;</p>
+    <p style="font-weight: 400;">I defined a fuction <strong>sameSide</strong> in main.py to do this safety check process, which is illustrated in the flow char below.</p>
+    <img src="3d6.png" alt="" height="500px">
+    <ul>
+      <li>STEP 6: Depth buffer</li>
+    </ul>
+    <p style="font-weight: 400;">In the last step, the surfaces can be successfully rendered with color. However, the surface being rendered later will overlay on the previous ones. This violates the object occlusion. Instead, the pixel that is
+      closest
+      to the canvas should be drawn no matter the rendering order. Therefore, one solution is to use an array to store the closest depth seen so far for each pixel (x, y) on canvas. The algorithm can be illustrated as</p>
+    <img src="3d7.png" alt="" height="500px">
+    <ul>
+      <li>STEP 7: Shading</li>
+    </ul>
+    <p style="font-weight: 400;">After implementing depth buffer, the last thing is to render different color to the surface, which is related to the orientation of the surface with respect to the light source. In this implementation, according to
+      the
+      assessment requirement, the light source is the observer. Therefore, when a surface is viewed on edge, it will be darker; when it is viewed flat, it will be lighter. This could be easily achieved by calculating the angle between the normal of
+      each surface and the direction of light.</p>
+    <p style="font-weight: 400;">The normal of the surface could be calculated by cross product two edge vectors of the surface.</p>
+    $$\vec N = \vec A \times \vec B$$
+    <p style="font-weight: 400;">Then normalize it by its length,</p>
+    $$\vec N_{unit} = \frac {\vec N}{|N|}$$
+    <p style="font-weight: 400;">Assume the light vector is towards negative z direction and is a unit vector,</p>
+    $$\vec L = \begin{bmatrix}
+    0 & 0 & -1
+    \end{bmatrix}$$
+    $$\vec N_{unit} \cdot \vec L = \cos (\theta)$$
+    <p style="font-weight: 400;">Finally, the absolute value of &nbsp;will be used to control the color.</p>
+    <img src="3d8.png" alt="" />
+    <h3>Final flow chart</h3>
+    <img src="3d9.png" alt="" height="500px">
+    <h2><a name="_Toc120481410"></a>Task 2 Results</h2>
+    <!-- <p style="font-weight: 400;">The final results are illustrated in figures above. The object defined in the object.txt file could be rendered with correct occlusion and shading.</p> -->
+  </div>
+
+
+
+
+
+  <video width=64% controls>
+    <source src="3d.mp4" type="video/mp4">
+    <source src="3d.ogg" type="video/ogg">
+    <source src="3d.webm" type="video/webm">
+    <object data="3d.mp4" width="320" height="240">
+      <embed src="3d.swf" width="320" height="240">
+    </object>
+  </video>
+
+
+</body>
+
+</html>

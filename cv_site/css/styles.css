@@ -1,0 +1,23 @@
+/* This is external CSS. */
+body {background-color:#FFF5EB;}
+hr {background-color: #FFF5EB;
+    border-style: dotted none none;
+    border-color: grey;
+    border-width: 5px;
+    height: 5px;
+    width: 50%;
+}
+.section {
+  text-decoration: underline;
+  color: black;
+}
+
+.years{
+  text-align: right;
+}
+h1 {color: #66BFBF;}
+h2 {color: #66BFBF;}
+
+.school{
+  font-size: 1em;
+}

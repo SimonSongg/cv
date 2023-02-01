@@ -1,0 +1,46 @@
+.imgcontent {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100%; */
+}
+
+.projectcontent {
+  /* display: inline-block; */
+  width: 90%;
+  line-height: 1.5;
+  margin: auto;
+}
+
+.fig {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.introimg{
+  margin-left: 1%;
+}
+h1{
+  margin-left: 10px;
+}
+
+table,table tr th, table tr td {
+ border:1px solid #ccc;
+ margin: auto;
+ }
+
+video {
+  /* text-align: center; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}

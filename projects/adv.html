@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Autonomous Delivery Vehicle</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../-68320c78eded82aa.jpg"
+            alt="icon"
+            height="50"
+            width="50"
+          />
+          Tianchen's site
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../cv_site/index.html">Resume</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Projects
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="projects/adv.html"
+                    >Autonomous Delivery Vehicle</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="FYP/FYP.html"
+                    >Indoor cruising robot</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Hand-eye calibration</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="3Drender/3Drender.html"
+                    >3D rendering by Pygame</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../blogs/blogs_main.html">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h1>Autonomous Delivery Vehicle</h1>
+    <img src="adv3.jpg" alt="" height="300" class="introimg" />
+    <hr />
+    <div class="projectcontent">
+      <p>
+        This Project was initially inspired by the situation that students have
+        to pickup their packages and take-away food at the main gate of the
+        campus, which was far away from the dorm of most of students. Therefore
+        we wanted to design an autonomous vehicle that could help deliver these
+        things.
+      </p>
+      <p>
+        Globally, the vehicle was localized by <strong>RTK-GPS</strong> which
+        provided <strong>10 cm</strong> accuracy, and guided in the pre-built
+        waypoint map. A ROS package for localization was used, which toke wheel
+        odometry, IMU and GPS and used extended kalman filter to produce an
+        optimal estimation of the position of the robot.
+        <strong>A* algorithm</strong> will provide a shortest path from the
+        closest waypoint to the given destination.
+      </p>
+    </div>
+    <figure>
+      <img src="advGPS.jpg" alt="" height="300" />
+      <figcaption>Collecting waypoints</figcaption>
+    </figure>
+
+    <div class="projectcontent">
+      As for perception, an RGB-D camera and a Radar were mainly used, all
+      facing towards. We used the output of the RGB-D camera as the input to the
+      nueral network to get a segmentation of collision-free space.
+    </div>
+    <figure>
+      <img src="WechatIMG297.jpeg" alt="" height="300" />
+      <img src="WechatIMG298.jpeg" alt="" height="300" />
+      <figcaption>Collision-free space segmentation result</figcaption>
+    </figure>
+    <div class="projectcontent">
+      The segmentation mask contributed to steering decision-making. The vehicle
+      tended to steer to the side with more collision-free space.<br />
+      Radar acted as a back-up for the visual system. If objects in short
+      distance were detected, the vehicle will perform emergency stop.
+    </div>
+
+    <div class="projectcontent">
+      A touch screen was mounted on the top of the vehicle for user-robot
+      interaction.
+    </div>
+
+    <script src="" async defer></script>
+  </body>
+</html>
