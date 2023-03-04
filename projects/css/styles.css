@@ -10,6 +10,8 @@
   width: 90%;
   line-height: 1.5;
   margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .fig {
@@ -25,17 +27,19 @@ figure {
   text-align: center;
 }
 
-.introimg{
+.introimg {
   margin-left: 1%;
 }
-h1{
+h1 {
   margin-left: 10px;
 }
 
-table,table tr th, table tr td {
- border:1px solid #ccc;
- margin: auto;
- }
+table,
+table tr th,
+table tr td {
+  border: 1px solid #ccc;
+  margin: auto;
+}
 
 video {
   /* text-align: center; */

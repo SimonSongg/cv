@@ -239,6 +239,49 @@
         <td></td>
       </tr>
     </table>
+    <br />
+    <div class="projectcontent">
+      After the machine perception results were obtained, the decision on the
+      steering of the vehicle should be inferred based on the existing
+      information. To achieve the smooth and safe autonomous operation, the
+      decision making should satisfy following rules: 1) Always go towards the
+      direction with both less obstacles and the global target; 2) When there is
+      not enough empty space in the central front, search possible available
+      path on two sides and temporarily ignore the global target to bypass the
+      obstacle; 3) When there is no path available, stop in place.
+    </div>
+    <br />
+    <div class="projectcontent">
+      <figure>
+        <img src="Picture1.png" alt="" />
+
+        <figcaption></figcaption>
+      </figure>
+      <br />
+      The path planning was based on local path planning and global path
+      planning. These two types of path planning will generate steering decision
+      respectively and finally integrated to get a comprehensive result.
+      <br />
+    </div>
+    <div class="projectcontent">
+      For localization, totally four UWB modules were used, which included three
+      modules operated as Anchors and one module operated as a Tag. The
+      localization accuracy test was carried out at Lobby A on the first floor
+      of IEB, UNNC. The layout of the anchor modules and the coordinate
+      assignment was shown in Figure below. The anchor modules were installed on
+      tripods with 2.1meters height and placed at three corners of the room. The
+      tag module was placed at several different spots within the area enclosed
+      by the anchors.
+      <figure>
+        <img src="UWB.png" alt="" height="500" />
+
+        <figcaption></figcaption>
+      </figure>
+      <br />
+      The A* algorithm would continuously generate a path from the current
+      position to the target position as a series of waypoints in the
+      pre-defined coordinates
+    </div>
 
     <!-- <p>$$\underline E = mc^2$$</p> -->
   </body>
