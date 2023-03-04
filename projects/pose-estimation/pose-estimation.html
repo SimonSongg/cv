@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mobile Robot Pose Estimation</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script
+      type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../../-68320c78eded82aa.jpg"
+            alt="icon"
+            height="50"
+            width="50"
+          />
+          Tianchen's site
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../../index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../cv_site/index.html">Resume</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Projects
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="../adv.html"
+                    >Autonomous Delivery Vehicle</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../FYP/FYP.html"
+                    >Indoor cruising robot</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Mobile Robot Pose Estimation</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../asbr/asbr.html"
+                    >Hand-eye calibration</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../3Drender/3Drender.html"
+                    >3D rendering by Pygame</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../stereo-matching/stereo.html"
+                    >Stereo Matching</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../blogs/blogs_main.html">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1>Mobile Robot Pose Estimation</h1>
+    <img src="cover.png" alt="" height="250" class="introimg" /><br /><br />
+    <br />
+    <hr />
+    <video width="64%" controls>
+      <source src="EKF.mp4" type="video/mp4" />
+      <source src="EKF.ogg" type="video/ogg" />
+      <source src="EKF.webm" type="video/webm" />
+      <object data="EKF.mp4" width="320" height="240">
+        <embed src="EKF.swf" width="320" height="240" />
+      </object>
+    </video>
+    <br />
+    <video width="64%" controls>
+      <source src="Particle.mp4" type="video/mp4" />
+      <source src="Particle.ogg" type="video/ogg" />
+      <source src="Particle.webm" type="video/webm" />
+      <object data="Particle.mp4" width="320" height="240">
+        <embed src="Particle.swf" width="320" height="240" />
+      </object>
+    </video>
+  </body>
+</html>
